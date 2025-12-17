@@ -9,11 +9,11 @@ DIGIT = 4
 STATS_FILE = "game_statistics.json"
 
 def get_guess_number():
-    """Get and return user's guess."""
+    """User input number."""
     return input(f"Please enter a {DIGIT} digit number: ")
     
 def guess_number_validation(guess):
-    """Validate guess input and return True if valid."""
+    """Guess input validation."""
     if not guess.isdigit():
         print("Wrong input - Insert only numbers")
         return False
@@ -29,7 +29,7 @@ def guess_number_validation(guess):
     return True
     
 def get_secret_number():
-    """Generate and return random secret number."""
+    """Secret number generator."""
     digits = list(range(10))
     first_digit = random.choice(digits[1:])
     digits.remove(first_digit)
@@ -37,13 +37,13 @@ def get_secret_number():
     return str(first_digit) + ''.join(map(str, remaining_digits))  
 
 def get_bulls_and_cows(secret, guess):
-    """Calculate and return bulls and cows count."""
+    """Bulls and cows counting."""
     bulls = sum(1 for i in range(DIGIT) if guess[i] == secret[i])
     cows = sum(1 for i in range(DIGIT) if guess[i] in secret and guess[i] != secret[i])
     return bulls, cows
 
 def format_count(count, singular, plural):
-    """Format count with proper singular/plural form."""
+    """Singular/plural."""
     if count == 0: return ""
     return f"{count} {singular if count == 1 else plural}"
 
@@ -69,7 +69,7 @@ def add_game_result(guesses, time_taken):
     save_statistics(stats)
 
 def display_statistics():
-    """Display game statistics summary."""
+    """Game statistics."""
     stats = load_statistics()
     if not stats:
         print("\nNo statistics available yet. Play some games first!")
@@ -92,7 +92,7 @@ def display_statistics():
     print(35*"==" + "\n")
     
 def main():
-    """Main game loop with menu."""
+    """First data"""
     print("Hi there!\n" + 35*"--")
     print("Welcome to Bulls and Cows game!")
     print(35*"--" + "\n")
@@ -102,12 +102,12 @@ def main():
         if choice == "1": play_game()
         elif choice == "2": display_statistics()
         elif choice == "3":
-            print("Thanks for playing! Goodbye! ")
+            print("Thanks for playing! Goodbye!")
             break
         else: print("Invalid choice\n")
 
 def play_game():
-    """Play one round of Bulls and Cows."""
+    """Play game."""
     secret = get_secret_number()
     score = 0
     start_time = time.time()
