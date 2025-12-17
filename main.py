@@ -102,7 +102,7 @@ def main():
         if choice == "1": play_game()
         elif choice == "2": display_statistics()
         elif choice == "3":
-            print("Thanks for playing! Goodbye! 👋")
+            print("Thanks for playing! Goodbye! ")
             break
         else: print("Invalid choice\n")
 
@@ -118,7 +118,7 @@ def play_game():
         bulls, cows = get_bulls_and_cows(secret, guess)
         if bulls == DIGIT:
             elapsed = round(time.time() - start_time, 2)
-            print(f"\nCorrect! You win 🎉\nGuesses: {score} | Time: {elapsed}s ⏱️")
+            print(f"\nCorrect! You win \nGuesses: {score} | Time: {elapsed}s ")
             add_game_result(score, elapsed)
             print("Result saved!\n")
             break
@@ -130,3 +130,4 @@ def play_game():
 
 if __name__ == "__main__":
     main()
+
